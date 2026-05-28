@@ -273,14 +273,51 @@ export default function Page() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white font-sans overflow-x-hidden relative selection:bg-purple-500 selection:text-white">
+    <div className="min-h-screen bg-[#020510] text-white font-sans overflow-x-hidden relative selection:bg-purple-500 selection:text-white">
       
-      {/* Background Starfield Grid */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08)_0%,transparent_65%)]" />
-        <div className="absolute top-[20%] right-[10%] w-96 h-96 rounded-full bg-purple-600/10 blur-[120px]" />
-        <div className="absolute bottom-[10%] left-[15%] w-[500px] h-[500px] rounded-full bg-indigo-600/10 blur-[160px]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      {/* ==========================================
+          🌌 DYNAMIC GALAXY SPACE BACKGROUND LAYERS
+          ========================================== */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        
+        {/* Cyber Space Grid Mapping */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(56,189,248,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(56,189,248,0.03)_1px,transparent_1px)] bg-[size:5rem_5rem]" />
+        
+        {/* Galaxy Nebulas (Deep Radial Color Orbs) */}
+        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-gradient-to-tr from-cyan-600/10 to-indigo-500/10 blur-[130px] opacity-70 animate-pulse" style={{ animationDuration: '12s' }} />
+        <div className="absolute top-[20%] right-[-5%] w-[45vw] h-[45vw] rounded-full bg-gradient-to-br from-fuchsia-600/15 via-purple-600/10 to-transparent blur-[150px] opacity-80" />
+        <div className="absolute bottom-[-15%] left-[20%] w-[55vw] h-[55vw] rounded-full bg-gradient-to-tr from-indigo-900/15 via-slate-900/10 to-transparent blur-[160px] opacity-90" />
+
+        {/* Scattered Interactive Twinkling Galaxy Stars */}
+        <svg className="absolute inset-0 w-full h-full opacity-60" xmlns="http://www.w3.org/2000/svg">
+          {/* Group 1: Fast Twinkling Stars */}
+          <g className="star-fast fill-white">
+            <circle cx="15%" cy="12%" r="1.5" />
+            <circle cx="85%" cy="18%" r="1" />
+            <circle cx="45%" cy="30%" r="2" />
+            <circle cx="70%" cy="45%" r="1.5" />
+            <circle cx="22%" cy="65%" r="1" />
+            <circle cx="92%" cy="75%" r="1.5" />
+          </g>
+          {/* Group 2: Medium Twinkling Stars */}
+          <g className="star-medium fill-cyan-400">
+            <circle cx="5%" cy="40%" r="1.5" />
+            <circle cx="35%" cy="15%" r="2.5" />
+            <circle cx="60%" cy="10%" r="1.2" />
+            <circle cx="80%" cy="55%" r="2" />
+            <circle cx="12%" cy="85%" r="1" />
+            <circle cx="50%" cy="92%" r="1.8" />
+          </g>
+          {/* Group 3: Slow Twinkling Stars */}
+          <g className="star-slow fill-purple-400">
+            <circle cx="28%" cy="25%" r="1.2" />
+            <circle cx="75%" cy="28%" r="1.8" />
+            <circle cx="95%" cy="3%" r="1.5" />
+            <circle cx="40%" cy="70%" r="2.2" />
+            <circle cx="65%" cy="80%" r="1" />
+            <circle cx="88%" cy="90%" r="1.6" />
+          </g>
+        </svg>
       </div>
 
       {/* HEADER NAVBAR */}
@@ -714,6 +751,19 @@ export default function Page() {
         }
         .animate-float {
           animation: float 5s ease-in-out infinite;
+        }
+        @keyframes twinkle {
+          0%, 100% { opacity: 0.2; transform: scale(0.8); }
+          50% { opacity: 1; transform: scale(1.2); }
+        }
+        .star-fast {
+          animation: twinkle 3s infinite ease-in-out;
+        }
+        .star-medium {
+          animation: twinkle 4.5s infinite ease-in-out;
+        }
+        .star-slow {
+          animation: twinkle 6s infinite ease-in-out;
         }
       `}</style>
 
