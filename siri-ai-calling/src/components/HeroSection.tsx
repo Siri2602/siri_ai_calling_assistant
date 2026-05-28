@@ -138,7 +138,7 @@ export default function HeroSection() {
               style={{ x: mascotX, y: mascotY }}
               className="relative w-full max-w-md"
             >
-              <AIMascot />
+            <AIMascot></AIMascot>
               <FloatingCards mouseX={mouseX} mouseY={mouseY} />
             </motion.div>
           </motion.div>

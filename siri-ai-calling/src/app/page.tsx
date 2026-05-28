@@ -1,23 +1,91 @@
 'use client';
 
 import React, { useState, useEffect, useRef, FormEvent } from 'react';
-import { 
-  Phone, 
-  Play, 
-  X, 
-  Activity, 
-  Volume2, 
-  VolumeX, 
-  Mic, 
-  Shield, 
-  Zap, 
-  Sparkles, 
-  TrendingUp, 
-  Radio
-} from 'lucide-react';
 
 // ==========================================
-// 🔊 PREMIUM INTERACTIVE SFX ENGINE (TYPED)
+// 🎨 HAND-CRAFTED PRE-RENDERED SVG ICONS (NO DEPENDENCY REQUIRED)
+// ==========================================
+const IconRadio = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="2" />
+    <path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14" />
+  </svg>
+);
+
+const IconPhone = ({ className = "w-5 h-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+  </svg>
+);
+
+const IconPlay = ({ className = "w-5 h-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="5 3 19 12 5 21 5 3" />
+  </svg>
+);
+
+const IconVolume2 = ({ className = "w-4 h-4" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+  </svg>
+);
+
+const IconVolumeX = ({ className = "w-4 h-4" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+    <line x1="23" y1="9" x2="17" y2="15" />
+    <line x1="17" y1="9" x2="23" y2="15" />
+  </svg>
+);
+
+const IconSparkles = ({ className = "w-3.5 h-3.5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 5a7 7 0 0 0-7 7h14a7 7 0 0 0-7-7z" />
+  </svg>
+);
+
+const IconTrendingUp = ({ className = "w-5 h-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+    <polyline points="17 6 23 6 23 12" />
+  </svg>
+);
+
+const IconZap = ({ className = "w-5 h-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+  </svg>
+);
+
+const IconMic = ({ className = "w-3.5 h-3.5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+    <path d="M19 10v1a7 7 0 0 1-14 0v-1M12 19v4M8 23h8" />
+  </svg>
+);
+
+const IconX = ({ className = "w-5 h-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+
+const IconShield = ({ className = "w-3.5 h-3.5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+  </svg>
+);
+
+const IconActivity = ({ className = "w-8 h-8" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+  </svg>
+);
+
+// ==========================================
+// 🔊 PREMIUM INTERACTIVE SFX ENGINE (STRICTLY TYPED)
 // ==========================================
 class SoundEngine {
   private ctx: AudioContext | null = null;
@@ -95,7 +163,7 @@ export default function Page() {
   const [callDuration, setCallDuration] = useState<number>(0);
   const [transcript, setTranscript] = useState<TranscriptMessage[]>([]);
   const [userSpeechInput, setUserSpeechInput] = useState<string>('');
-  const durationInterval = useRef<NodeJS.Timeout | null>(null);
+  const durationInterval = useRef<any>(null);
   
   // Cursor coordinate tracker
   const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -226,7 +294,7 @@ export default function Page() {
             onClick={() => { sfx.playClick(); setActiveModal(null); }}
           >
             <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-500 shadow-[0_0_15px_rgba(168,85,247,0.4)] transition-transform group-hover:scale-110">
-              <Radio className="w-5 h-5 text-white" />
+              <IconRadio />
             </div>
             <span className="text-xl font-extrabold tracking-tight">
               Siri <span className="text-cyan-400">AI</span>
@@ -251,14 +319,14 @@ export default function Page() {
               onClick={() => { setIsMuted(!isMuted); sfx.playClick(); }}
               className="p-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white transition-all"
             >
-              {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-cyan-400" />}
+              {isMuted ? <IconVolumeX /> : <IconVolume2 />}
             </button>
             <button
               onMouseEnter={() => sfx.playHover()}
               onClick={() => { sfx.playClick(); setActiveModal('login'); }}
               className="relative px-5 py-2 rounded-xl text-sm font-semibold text-white bg-white/5 border border-white/10 transition-all hover:border-cyan-500/50"
             >
-              Login Free <Sparkles className="inline-block w-3.5 h-3.5 ml-1 text-cyan-400" />
+              Login Free <IconSparkles className="inline-block w-3.5 h-3.5 ml-1 text-cyan-400" />
             </button>
           </div>
         </div>
@@ -301,21 +369,21 @@ export default function Page() {
               onClick={() => { sfx.playClick(); setActiveModal('demo'); }}
               className="flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold text-slate-200 transition-all bg-white/5 border border-white/10 hover:bg-white/10"
             >
-              <Play className="w-5 h-5 text-cyan-400 fill-cyan-400/20" /> Watch Demo
+              <IconPlay /> Watch Demo
             </button>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8">
             <div onMouseEnter={() => sfx.playHover()} className="bg-white/[0.02] border border-white/5 p-4 rounded-2xl flex items-center gap-4 transition-all hover:-translate-y-1">
-              <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400"><Phone className="w-5 h-5" /></div>
+              <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400"><IconPhone /></div>
               <div><div className="text-xl font-extrabold text-white">10K+</div><div className="text-xs text-slate-400">Calls Automated</div></div>
             </div>
             <div onMouseEnter={() => sfx.playHover()} className="bg-white/[0.02] border border-white/5 p-4 rounded-2xl flex items-center gap-4 transition-all hover:-translate-y-1">
-              <div className="p-3 rounded-xl bg-cyan-500/10 text-cyan-400"><TrendingUp className="w-5 h-5" /></div>
+              <div className="p-3 rounded-xl bg-cyan-500/10 text-cyan-400"><IconTrendingUp /></div>
               <div><div className="text-xl font-extrabold text-white">98%</div><div className="text-xs text-slate-400">Accuracy Rate</div></div>
             </div>
             <div onMouseEnter={() => sfx.playHover()} className="bg-white/[0.02] border border-white/5 p-4 rounded-2xl flex items-center gap-4 transition-all hover:-translate-y-1">
-              <div className="p-3 rounded-xl bg-amber-500/10 text-amber-400"><Zap className="w-5 h-5" /></div>
+              <div className="p-3 rounded-xl bg-amber-500/10 text-amber-400"><IconZap /></div>
               <div><div className="text-xl font-extrabold text-white">24/7</div><div className="text-xs text-slate-400">AI Support</div></div>
             </div>
           </div>
@@ -360,11 +428,11 @@ export default function Page() {
 
             {/* Float Badges */}
             <div className="absolute -top-4 -left-6 bg-slate-900/90 border border-cyan-500/30 px-3.5 py-1.5 rounded-full flex items-center gap-2 backdrop-blur-md">
-              <Mic className="w-3.5 h-3.5 text-cyan-400" />
+              <IconMic />
               <span className="text-[10px] font-bold">Live AI Connected</span>
             </div>
             <div className="absolute top-1/4 -right-12 bg-slate-900/90 border border-purple-500/30 px-3.5 py-1.5 rounded-full flex items-center gap-2 backdrop-blur-md">
-              <Zap className="w-3.5 h-3.5 text-purple-400" />
+              <IconZap className="w-3.5 h-3.5 text-purple-400" />
               <span className="text-[10px] font-bold">99.2% Automation</span>
             </div>
           </div>
@@ -377,13 +445,13 @@ export default function Page() {
           <div className="relative w-full max-w-2xl bg-slate-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
             <div className="flex items-center justify-between p-6 border-b border-white/5 bg-slate-950/40">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400"><Phone className="w-5 h-5" /></div>
+                <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400"><IconPhone /></div>
                 <div>
                   <h3 className="text-lg font-bold text-white">Siri AI Voice Caller Simulator</h3>
                   <p className="text-xs text-slate-400">Experience our human-like smart agent automation instantly</p>
                 </div>
               </div>
-              <button onClick={() => { sfx.playClick(); setActiveModal(null); }} className="p-2 text-slate-400 hover:text-white"><X className="w-5 h-5" /></button>
+              <button onClick={() => { sfx.playClick(); setActiveModal(null); }} className="p-2 text-slate-400 hover:text-white"><IconX /></button>
             </div>
 
             <div className="p-6 space-y-6">
@@ -440,7 +508,7 @@ export default function Page() {
             </div>
 
             <div className="p-6 border-t border-white/5 bg-slate-950/40 flex items-center justify-between">
-              <span className="text-xs text-slate-400 flex items-center gap-1"><Shield className="w-3.5 h-3.5" /> Secure Environment</span>
+              <span className="text-xs text-slate-400 flex items-center gap-1"><IconShield /> Secure Environment</span>
               {callState === 'idle' ? (
                 <button onClick={startCallSim} className="px-6 py-2.5 rounded-xl bg-purple-600 font-bold text-sm text-white">🚀 Initiate Simulated Call</button>
               ) : (
@@ -457,10 +525,10 @@ export default function Page() {
           <div className="relative w-full max-w-2xl bg-slate-900 border border-white/10 rounded-3xl overflow-hidden p-6 space-y-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-bold">Interactive Platform Walkthrough</h3>
-              <button onClick={() => setActiveModal(null)} className="p-1 text-slate-400 hover:text-white"><X className="w-5 h-5" /></button>
+              <button onClick={() => setActiveModal(null)} className="p-1 text-slate-400 hover:text-white"><IconX /></button>
             </div>
             <div className="aspect-video rounded-xl bg-black border border-white/5 flex flex-col justify-center items-center text-center p-4">
-              <Activity className="w-8 h-8 text-cyan-400 animate-pulse mb-2" />
+              <IconActivity />
               <p className="font-mono text-sm text-slate-300">SYSTEM TELEMETRY ENGINE CONNECTED</p>
               <p className="text-xs text-slate-500 mt-1">Simulated Latency Metric Target: 18ms</p>
             </div>
@@ -480,7 +548,8 @@ export default function Page() {
           </div>
         </div>
       )}
-  {/* Embedded CSS Animation Injector */}
+
+      {/* Embedded CSS Animation Injector */}
       <style>{`
         @keyframes float {
           0% { transform: translateY(0px); }
